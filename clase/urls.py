@@ -1,7 +1,8 @@
-from django.http import HttpResponse
 from django.urls import path 
-from .views import curso
+from .views import Datos, company, salary
 
 urlpatterns=[
-    path('',curso, name= 'curso' )
+    path('Datos/',Datos, name= 'Datos' ),
+    path('company/',company, name= 'company' ),
+    path('salary/',salary, name= 'salario' )
 ]
