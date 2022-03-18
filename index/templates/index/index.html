@@ -20,8 +20,9 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <a class="btn btn-primary" href="#signup">Sign Up</a>
+                <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
+                <a class="navbar-brand" href="{% url 'info' %}">Registro</a>
+                <a class="navbar-brand" href="{% url 'info' %}">Mas Información</a>
             </div>
         </nav>
         <!-- Masthead-->
@@ -46,6 +47,12 @@
                 </div>
             </div>
         </header>
+        {% block clase%}
+        <title>Informacion sobre proyecto</title>
+        {% endblock clase%}
+        {% block Registrarse %}
+        {% endblock Registrarse %}
+
         <!-- Footer-->
         <footer class="footer bg-light">
             <div class="container">
