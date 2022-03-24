@@ -21,11 +21,13 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
-                <a class="navbar-brand" href="{% url 'info' %}">Registro</a>
+                <a class="navbar-brand" href="{% url 'formulario' %}"> Registro del curso</a>
+                <a class="navbar-brand" href="{% url 'Buscador' %}">Buscador</a>
                 <a class="navbar-brand" href="{% url 'info' %}">Mas Información</a>
             </div>
         </nav>
         <!-- Masthead-->
+        {% block header_index %}
         <header class="masthead">
             <div class="container position-relative">
                 <div class="row justify-content-center">
@@ -47,11 +49,11 @@
                 </div>
             </div>
         </header>
+        {% endblock header_index %}
         {% block clase%}
         <title>Informacion sobre proyecto</title>
         {% endblock clase%}
-        {% block Registrarse %}
-        {% endblock Registrarse %}
+        {% block formulario %}{% endblock  %}
 
         <!-- Footer-->
         <footer class="footer bg-light">

@@ -1,0 +1,13 @@
+{% extends 'index/index.html' %}
+{% block header_index %}{% endblock  %}
+
+{% block formulario %}
+  <form action= "" method = 'POST'> 
+        {% csrf_token %}
+       <table>
+           {{formulario_curso.as_table}}
+       </table>
+        <input value= "Enviar" type = "submit" > 
+  </form>
+{% endblock  %}
+

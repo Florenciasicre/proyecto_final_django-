@@ -1,0 +1,12 @@
+{% extends 'index/index.html' %}
+{% block header_index %}{% endblock  %}
+
+{% block formulario %}
+  <form action= {% url 'Buscador' %} method = 'GET'> 
+        {% csrf_token %}
+        <table>
+          {{form_busqueda.as_table}}
+      </table>
+       <input value= "Enviar" type = "submit" > 
+  </form>
+{% endblock  %}
