@@ -22,7 +22,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'formulario' %}"> Registro del curso</a>
-                <a class="navbar-brand" href="{% url 'Buscador' %}">Buscador</a>
+                <a class="navbar-brand" href="{% url 'busqueda_cursos' %}">Buscador</a>
                 <a class="navbar-brand" href="{% url 'info' %}">Mas Información</a>
             </div>
         </nav>
@@ -54,7 +54,7 @@
         <title>Informacion sobre proyecto</title>
         {% endblock clase%}
         {% block formulario %}{% endblock  %}
-
+        {% block formulario_cursos %}{% endblock  %}
         <!-- Footer-->
         <footer class="footer bg-light">
             <div class="container">

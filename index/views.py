@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import Template, loader
 from index.models import curso
-from index.forms import form_curso, form_busqueda
+from index.forms import buscadorCurso, form_curso
 
 # Create your views here.
 
@@ -52,12 +52,18 @@ def formulario(request):
 
         #icontains: nombre (n_varModels) debe contener lo que buscamos. No exactamente igual
         #clase.object, get genera error si no encuentra
-def Buscador(request):
-    busqueda = {}
-    if form_busqueda(request.GET):
-        nombre_curso = form_busqueda(request.GET['curso'])
-        busqueda = curso.objects.filter(nombre__icontains = nombre_curso)
-    return render(request,'index/form_busqueda.html',{'busqueda': busqueda})
+def busqueda_cursos(request):
+    cursos_buscados = []
+    #request.GET.get: accedo a lo que tiene un elemento del form
+    print(request.GET)
+    dato = request.GET.get('partial_curso', None)
+
+    if dato is not None:
+        cursos_buscados = curso.objects.filter(nombre__icontains = dato)
+
+    buscador_cursos = buscadorCurso()
+    return render(request,'index/form_busqueda.html',
+    {'buscador_cursos': buscador_cursos ,'cursos_buscados': cursos_buscados})
 
 
 

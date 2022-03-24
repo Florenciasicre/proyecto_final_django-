@@ -1,12 +1,21 @@
 {% extends 'index/index.html' %}
 {% block header_index %}{% endblock  %}
 
-{% block formulario %}
-  <form action= {% url 'Buscador' %} method = 'GET'> 
+{% block formulario_cursos %}
+  <form action= {% url 'busqueda_cursos' %} method = 'get'> 
         {% csrf_token %}
         <table>
-          {{form_busqueda.as_table}}
+          {{buscador.as_table}}
       </table>
-       <input value= "Enviar" type = "submit" > 
+       <input type = "submit" placeholder ='Enviar'> 
   </form>
+  {% if dato %}
+      {% for cursos in cursos_buscados %}
+          <li>
+            {{cursos}}
+          </li>
+      {% endfor %}
+    {% else %}
+        No se encotró nada...
+  {% endif %}
 {% endblock  %}
