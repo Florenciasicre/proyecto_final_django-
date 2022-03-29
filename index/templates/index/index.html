@@ -23,7 +23,8 @@
                 <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'formulario' %}"> Registro del curso</a>
                 <a class="navbar-brand" href="{% url 'busqueda_cursos' %}">Buscador</a>
-                <a class="navbar-brand" href="{% url 'info' %}">Mas Información</a>
+                <a class="navbar-brand" href="{% url 'listAlu' %}">Estudiantes</a>
+                <a class="navbar-brand" href="{% url 'profesoresLista' %}">Profesores</a>
             </div>
         </nav>
         <!-- Masthead-->
@@ -53,6 +54,8 @@
         {% block clase%}
         <title>Informacion sobre proyecto</title>
         {% endblock clase%}
+        {% block listado_estudiante  %}{% endblock  %}
+        
         {% block formulario %}{% endblock  %}
         {% block formulario_cursos %}{% endblock  %}
         <!-- Footer-->

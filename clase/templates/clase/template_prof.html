@@ -1,0 +1,11 @@
+{% extends 'index/index.html' %}
+
+{% block header_index %}
+    
+  </form>
+  {% for profesor in object_list %}
+     <li>
+         {{profesor}}
+         <a href="{% url 'profDetalle' profesor.id%}">Ver más</a>
+  {% endfor %}
+{% endblock header_index %}

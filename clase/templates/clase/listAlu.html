@@ -1,0 +1,15 @@
+{% extends 'index/index.html' %}
+
+{% block header_index %}
+    <a href="{% url 'crearAlu' %}">
+        Crear un estudiante
+    </a>
+  </form>
+  {% for alu in listAlu%}
+     <li>
+         {{alu}} --> ID: {{alu.id}}
+         <a href="{% url 'actualizarAlu' alu.id%}">Editar</a>
+         <a href="{% url 'borrarAlu' alu.id%}">Borrar</a>
+     </li>
+  {% endfor %}
+{% endblock header_index %}

@@ -35,15 +35,23 @@ def Curso(self):
 #    return render(request, 'index/formulario.html',{}) 
 # --> con form html :  Curso: <input type= 'text' name = 'curso'></input>
                        # Estado: <input type= 'boolean' name= 'actividad'></input>
+
+
 #formulario con django 
 
 def formulario(request):
   if request.method == 'POST':
-      formulario_curso =  form_curso(request.POST)
+
+      formulario_curso =  form_curso(request.POST) #variable que paso en el template
+      
       if formulario_curso.is_valid():
-          data = formulario_curso.cleaned_data 
-          nuevo_curso = curso(nombre = data['curso'], actividad = data['actividad'] )
+
+          data = formulario_curso.cleaned_data
+
+          nuevo_curso = curso(nombre = data['curso'], actividad = data['actividad'])
+
           nuevo_curso.save()
+
           return render (request,'index/index.html')
   else:
          formulario_curso = form_curso()
@@ -53,17 +61,14 @@ def formulario(request):
         #icontains: nombre (n_varModels) debe contener lo que buscamos. No exactamente igual
         #clase.object, get genera error si no encuentra
 def busqueda_cursos(request):
-    cursos_buscados = []
     #request.GET.get: accedo a lo que tiene un elemento del form
-    print(request.GET)
-    dato = request.GET.get('partial_curso', None)
-
-    if dato is not None:
+    if request.GET["partial_curso"]:
+        dato = request.GET["partial_curso"]
         cursos_buscados = curso.objects.filter(nombre__icontains = dato)
-
-    buscador_cursos = buscadorCurso()
-    return render(request,'index/form_busqueda.html',
-    {'buscador_cursos': buscador_cursos ,'cursos_buscados': cursos_buscados})
+        return render(request,'index/form_busqueda.html',{'cursos_buscados': cursos_buscados})
+    else:
+        respuesta = 'No enviaste datos'
+    return HttpResponse(respuesta)
 
 
 

@@ -1,0 +1,13 @@
+{% extends 'index/index.html' %}
+{% block header_index %}{% endblock  %}
+
+{% block formulario %}
+
+  <form action= "" method = 'POST'> 
+        {% csrf_token %}
+       <table>
+           {{form_Alu.as_table}}
+       </table>
+        <input value= "Crear" type = "submit" >
+  
+{% endblock  %}

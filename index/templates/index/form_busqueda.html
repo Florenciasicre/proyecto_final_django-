@@ -2,10 +2,10 @@
 {% block header_index %}{% endblock  %}
 
 {% block formulario_cursos %}
-  <form action= {% url 'busqueda_cursos' %} method = 'get'> 
+  <form action= "" method = 'GET'> 
         {% csrf_token %}
         <table>
-          {{buscador.as_table}}
+          {{cursos_buscadoso.as_table}}
       </table>
        <input type = "submit" placeholder ='Enviar'> 
   </form>
