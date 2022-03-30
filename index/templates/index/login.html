@@ -1,0 +1,17 @@
+{% extends 'index/index.html' %}
+
+{% block header_index %}
+{% endblock header_index %}
+{% block login %}
+ <h5>Iniciar sesion</h5>
+ <form action='' method='POST'>
+     {% if mensaje %}
+          {{mensaje}}
+     {% endif %}
+
+     {% csrf_token %}
+        {{form.as_p}}
+        <input type='submit'></input>
+</form>
+
+{% endblock login %}

@@ -2,7 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import Template, loader
 from index.models import curso
-from index.forms import buscadorCurso, form_curso
+from index.forms import buscadorCurso, form_curso, UserRegisterForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout,authenticate
 
 # Create your views here.
 
@@ -71,5 +73,40 @@ def busqueda_cursos(request):
     return HttpResponse(respuesta)
 
 
+#con usuario desde pane
+def login_request(request):
 
-    
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user = authenticate(username = username, password = password)
+            if user is not None:
+                login(request,user)
+                return render(request,"index/index.html", {'mensaje': 'Bienvenido, te logiaste!!'})
+            else:
+                return render(request,"index/login.html", {'form': form,'mensaje': 'Error, falta informacion'})
+        else:
+            return render(request,"index/login.html", {'form': form, 'mensaje': 'Error, formulario erroneo'})
+    form = AuthenticationForm()
+    return render (request, 'index/login.html',{'form': form})
+
+#sin usuario desde panel 
+def registro(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST) # Si formulario de django uso UserCreationForm
+        
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return request(request, 'index/index.html',{'mensaje': f'Usuario creado {username}'})
+
+    else:
+           form = UserRegisterForm()
+           return render(request, 'index/registro.html',{'form': form, 'mensaje': ''})
+
+    return render(request, 'index/registro.html',{'form': form})
+

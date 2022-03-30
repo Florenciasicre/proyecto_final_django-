@@ -1,0 +1,9 @@
+{% extends 'index/index.html' %}
+
+{% block header_index %}
+<form method=''>
+    {% csrf_token %}
+    Confirma el borrado de elemento profesor?
+    <input type='submit' placeholder='Confirmo'></input>
+  </form>
+{% endblock header_index %}

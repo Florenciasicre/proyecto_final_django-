@@ -1,0 +1,13 @@
+{% extends 'index/index.html' %}
+{% block header_index %}
+{% endblock  %}
+
+{% block formulario_cursos %}
+  <form action= "" method = 'GET'> 
+       <h5>Registrate !! </h5
+        {% csrf_token %}
+          {{form.as_table}}
+       <input type = "submit" placeholder ='Enviar'> 
+  </form>
+
+{% endblock  %}

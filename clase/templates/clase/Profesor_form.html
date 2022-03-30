@@ -1,0 +1,12 @@
+{% extends 'index/index.html' %}
+{% block header_index %}
+{% endblock  %}
+
+{% block formulario %}
+
+  <form method = 'POST'> 
+        {% csrf_token %}    
+           {{form.as_p}}
+        <input value= "UpDate" type = "submit" >
+  
+{% endblock  %}

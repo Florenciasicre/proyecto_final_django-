@@ -25,6 +25,9 @@
                 <a class="navbar-brand" href="{% url 'busqueda_cursos' %}">Buscador</a>
                 <a class="navbar-brand" href="{% url 'listAlu' %}">Estudiantes</a>
                 <a class="navbar-brand" href="{% url 'profesoresLista' %}">Profesores</a>
+                <a class="navbar-brand" href="{% url 'login' %}">Login</a>
+                <a class="navbar-brand" href="{% url 'logout' %}">Logout</a>
+                <a class="navbar-brand" href="{% url 'registro' %}">Registrarse</a>
             </div>
         </nav>
         <!-- Masthead-->
@@ -35,7 +38,15 @@
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5">Bienvenido a mi proyecto Django!</h1>
+                            
+                            <h1 class="mb-5">
+                                {% if mensaje %}
+                                   {{mensaje}}
+                                {% else %}
+                                     Bienvenido a mi proyecto Django!
+                                {% endif %}
+                               </h1>
+                            
                             <!-- Signup form-->
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -55,7 +66,7 @@
         <title>Informacion sobre proyecto</title>
         {% endblock clase%}
         {% block listado_estudiante  %}{% endblock  %}
-        
+        {% block login %}{% endblock  %}
         {% block formulario %}{% endblock  %}
         {% block formulario_cursos %}{% endblock  %}
         <!-- Footer-->
